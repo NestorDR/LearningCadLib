@@ -66,7 +66,6 @@ namespace LearningCadLib
                     break;
             }
 
-
             return fullFilename;
         }
 

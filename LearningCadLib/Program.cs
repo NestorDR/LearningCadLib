@@ -15,25 +15,25 @@ namespace LearningCadLib
             try
             {
                 List<string> filenameList = new List<string>
-            {
-                new DxfTriangleExample().Draw(),
-                new DxfSquareDashedLineTypeExample().Draw(),
-                new DxfLineTypeExample().Draw(),
+                {
+                    new DxfTriangleExample().Draw(),
+                    new DxfSquareDashedLineTypeExample().Draw(),
+                    new DxfLineTypeExample().Draw(),
 
-                // Visit https://sunglass.io/autocad-hatch-patterns-what-you-need-to-know/
-                // This patterns range from grass to bricks to any imaginable design and are stored as .pat files.
-                // CAD hatch patterns are a set of graphic patterns that are used to hatch a surface in a drawing.
-                new DxfHatchExample().Draw(),
-                new DxfTriangleExampleAssociatedHatch().Draw(),
-                new DxfHatchExampleWithSplineEdge().Draw(),
-                new DxfHatch3DMultiHatchingExample().Draw(),
+                    // Visit https://sunglass.io/autocad-hatch-patterns-what-you-need-to-know/
+                    // This patterns range from grass to bricks to any imaginable design and are stored as .pat files.
+                    // CAD hatch patterns are a set of graphic patterns that are used to hatch a surface in a drawing.
+                    new DxfHatchExample().Draw(),
+                    new DxfTriangleExampleAssociatedHatch().Draw(),
+                    new DxfHatchExampleWithSplineEdge().Draw(),
+                    new DxfHatch3DMultiHatchingExample().Draw(),
 
-                // 3D drawing 
-                new DxfCubeExample().Draw(),
+                    // 3D drawing 
+                    new DxfCubeExample().Draw(),
 
-                // Profile prototype seed
-                new DxfProfileExample().Draw(),
-            };
+                    // Profile prototype seed
+                    new DxfProfileExample().Draw(),
+                };
 
                 if (filenameList.Count == 1)
                     OpenFile(filenameList[0]);
@@ -43,13 +43,13 @@ namespace LearningCadLib
             }
             catch (WW.InternalException exception)
             {
-                    Console.WriteLine($"WW.CadLib - {exception.Message} - Press [ Enter ] to exit...");
-                    Console.ReadLine();
+                Console.WriteLine($"WW.CadLib - {exception.Message} - Press [ Enter ] to exit...");
+                Console.ReadLine();
             }
             catch (Exception exception)
             {
-                    Console.WriteLine(exception.Message);
-                    Console.ReadLine();
+                Console.WriteLine(exception.Message);
+                Console.ReadLine();
             }
         }
 
