@@ -57,6 +57,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DxfLayoutExample.cs" />
     <Compile Include="DxfLineTypeExample.cs" />
     <Compile Include="DxfSquareDashedLineTypeExample.cs" />
     <Compile Include="DxfHatchExampleWithSplineEdge.cs" />

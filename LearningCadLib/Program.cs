@@ -31,6 +31,9 @@ namespace LearningCadLib
                     // 3D drawing 
                     new DxfCubeExample().Draw(),
 
+                    // DxfViewport
+                    new DxfLayoutExample().Draw(),
+
                     // Profile prototype seed
                     new DxfProfileExample().Draw(),
                 };
