@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
-using System.Windows.Forms;
 using Extensions;
 
 namespace LearningCadLib
@@ -34,6 +33,9 @@ namespace LearningCadLib
                     // DxfViewport
                     new DxfLayoutExample().Draw(),
 
+                    // AlignedDimension
+                    new DxfAlignedDimensionExample(false).Draw(),
+                    
                     // Profile prototype seed
                     new DxfProfileExample().Draw(),
                 };
