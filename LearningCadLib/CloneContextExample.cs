@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Reflection;
+using WW.Cad.Drawing;
 using WW.Cad.IO;
 using WW.Cad.Model;
 using WW.Cad.Model.Entities;
@@ -22,13 +23,14 @@ namespace LearningCadLib
             DxfLineType lineType = new DxfLineType("DASH_DOT", 1d, -0.2d, 0d, -0.2d);
             sourceModel.LineTypes.Add(lineType);
 
-            DxfCircle circle = new DxfCircle(Point2D.Zero, 5d)
+            Point2D circleCenter = new Point2D(10d, 10d);
+            DxfCircle circle = new DxfCircle(circleCenter, 5d)
             {
                 LineType = lineType
             };
             sourceModel.Entities.Add(circle);
 
-            DxfLine line = new DxfLine(Point2D.Zero, new Point2D(5d, 0d))
+            DxfLine line = new DxfLine(circleCenter, new Point2D(circleCenter.X + circle.Radius, circleCenter.Y ))
             {
                 LineType = lineType
             };
@@ -65,17 +67,26 @@ namespace LearningCadLib
             const string BLOCK_NAME = "MyBlock";
             if (!Model.Blocks.TryGetValue(BLOCK_NAME, out var dxfBlock))
             {
+                
                 dxfBlock = new DxfBlock(BLOCK_NAME); 
-                dxfBlock.Entities.Add(new DxfCircle(new Point2D(10d, 0), 10d));
                 
                 if (File.Exists(filename))
                 {
                     sourceModel = CadReader.Read(filename);
 
+                    // Get bounds
+                    BoundsCalculator boundsCalculator = new BoundsCalculator();
+                    boundsCalculator.GetBounds(sourceModel);
+                    Bounds3D bounds = boundsCalculator.Bounds;
+                    
+                    Matrix4D centerTransform = Transformation4D.Translation(Point3D.Zero - bounds.Center);
+                    TransformConfig transformConfig = new TransformConfig();
+                    
                     cloneContext = new CloneContext(sourceModel, Model, ReferenceResolutionType.CloneMissing);
 
                     foreach (DxfEntity entity in sourceModel.Entities)
                     {
+                        entity.TransformMe(transformConfig, centerTransform);
                         DxfEntity clonedEntity = (DxfEntity)entity.Clone(cloneContext);
                         dxfBlock.Entities.Add(clonedEntity);
                     }
@@ -87,8 +98,11 @@ namespace LearningCadLib
             }
 
             // Add drawing as a block insert
-            DxfInsert insert = new DxfInsert(dxfBlock, Point3D.Zero);
+            DxfInsert insert = new DxfInsert(dxfBlock, new Point3D(5d, 0d, 0d));
             Model.Entities.Add(insert);
+            
+            // Add circle at coordinate origin
+            Model.Entities.Add(new DxfCircle(Point2D.Zero, 10d));
 
             #endregion
 
