@@ -27,7 +27,7 @@ namespace LearningCadLib
         {
             Debug.Assert(!string.IsNullOrWhiteSpace(drawingName), $"The {nameof(drawingName).ToSentence()} must not be null or empty.");
             DrawingName = drawingName;
-            Model = new DxfModel(DxfVersion.Dxf24);         // Dxf24: DXF revision 24.1.01 (AutoCAD 2010, AC1024)
+            Model = new DxfModel(DxfVersion.Dxf32);         // Dxf24: DXF revision 24.1.01 (AutoCAD 2010, AC1024)
                                                             // Visit: https://www.woutware.com/doc/cadlib4.0/api/WW.Cad.Model.DxfVersion.html
             Model.Entities.Clear();
         }
@@ -39,30 +39,32 @@ namespace LearningCadLib
         internal abstract string Draw();
 
         /// <summary>
-        /// Saves a file base and return its full path.
+        /// Saves a file with a model and return its full path.
         /// </summary>
         /// <returns>Full path of the file saved.</returns>
-        protected string SaveFile(FileType fileType = FileType.Dxf)
+        protected string SaveFile(string filename = null, DxfModel model = null, FileType fileType = FileType.Dxf)
         {
             string assemblyPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string dxfPath = Path.Combine((assemblyPath ?? string.Empty).Replace("\\bin\\Debug", ""), "DxfFiles");
+            string dxfPath = Path.Combine((assemblyPath ?? string.Empty).Replace(@"\bin\Debug", ""), "DxfFiles");
 
-            string fullFilename = Path.Combine(dxfPath, DrawingName);
+            if (string.IsNullOrWhiteSpace(filename)) filename = DrawingName;
+            string fullFilename = Path.Combine(dxfPath, filename);
             fullFilename = Path.ChangeExtension(fullFilename, fileType == FileType.Dxf ? ".dxf" : ".dwg");
 
             DirectoryInfo dxfDirectory = new DirectoryInfo(Path.GetDirectoryName(fullFilename) ?? string.Empty);
             if (!dxfDirectory.Exists) dxfDirectory.Create();
 
             if (File.Exists(fullFilename)) File.Delete(fullFilename);
-            
+
+            if (model == null) model = Model;
             switch (fileType)
             {
                 case FileType.Dxf:
-                    DxfWriter.Write(fullFilename, Model);
+                    DxfWriter.Write(fullFilename, model);
                     FileHelper.ClearLinesWith(typeof(Program).Assembly.GetName().Name.Remove(0, 8), fullFilename);
                     break;
                 case FileType.Dwg:
-                    DwgWriter.Write(fullFilename, Model);
+                    DwgWriter.Write(fullFilename, model);
                     break;
             }
 

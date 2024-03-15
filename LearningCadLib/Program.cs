@@ -33,9 +33,13 @@ namespace LearningCadLib
                     // DxfViewport
                     new DxfLayoutExample().Draw(),
 
-                    // AlignedDimension
-                    new DxfAlignedDimensionExample(false).Draw(),
+                    // Dimensions
+                    new DxfDimensionLinearExample(true).Draw(),
+                    new DxfDimensionAlignedExample(false).Draw(),
                     
+                    // Cloning
+                    new CloneContextExample().Draw(),
+
                     // Profile prototype seed
                     new DxfProfileExample().Draw(),
                 };

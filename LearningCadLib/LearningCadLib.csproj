@@ -57,7 +57,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DxfAlignedDimensionExample.cs" />
+    <Compile Include="CloneContextExample.cs" />
+    <Compile Include="DxfDimensionAlignedExample.cs" />
+    <Compile Include="DxfDimensionLinearExample.cs" />
     <Compile Include="DxfLayoutExample.cs" />
     <Compile Include="DxfLineTypeExample.cs" />
     <Compile Include="DxfSquareDashedLineTypeExample.cs" />

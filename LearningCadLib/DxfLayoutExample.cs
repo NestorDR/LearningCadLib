@@ -41,25 +41,29 @@ namespace LearningCadLib
 
                 {
                     // This viewport is mandatory, it describes paper space itself.
-                    DxfViewport paperSpaceViewport = new DxfViewport();
-                    paperSpaceViewport.ViewCenter = new Point2D(0d, 0d);
-                    paperSpaceViewport.Size = new Size2D(100d, 100d);
-                    paperSpaceViewport.Visible = true;
-                    paperSpaceViewport.ViewHeight = 100d;
-                    paperSpaceViewport.PaperSpace = true;
+                    DxfViewport paperSpaceViewport = new DxfViewport
+                    {
+                        ViewCenter = new Point2D(0d, 0d),
+                        Size = new Size2D(100d, 100d),
+                        Visible = true,
+                        ViewHeight = 100d,
+                        PaperSpace = true
+                    };
                     paperSpaceViewport.FrozenLayers.Add(frozenLayer);
                     layout1.Viewports.Add(paperSpaceViewport);
 
                     // This viewport is a viewport showing a piece of model space in paper space.
                     // The total scale factor will be Size.Y / ViewHeight.
-                    DxfViewport modelSpaceViewport = new DxfViewport();
-                    modelSpaceViewport.ViewHeight = 6d;
-                    modelSpaceViewport.ViewCenter = new Point2D(0d, 0d);
-                    modelSpaceViewport.Center = new Point3D(40d, 30d, 0d);
-                    modelSpaceViewport.Target = new Point3D(0d, 0d, 0d);
-                    modelSpaceViewport.Size = new Size2D(80d, 60d);
-                    modelSpaceViewport.PaperSpace = true;
-                    modelSpaceViewport.Visible = true;
+                    DxfViewport modelSpaceViewport = new DxfViewport
+                    {
+                        ViewHeight = 6d,
+                        ViewCenter = new Point2D(0d, 0d),
+                        Center = new Point3D(40d, 30d, 0d),
+                        Target = new Point3D(0d, 0d, 0d),
+                        Size = new Size2D(80d, 60d),
+                        PaperSpace = true,
+                        Visible = true
+                    };
                     layout1.Viewports.Add(modelSpaceViewport);
                 }
             }
@@ -80,10 +84,12 @@ namespace LearningCadLib
 
                 {
                     // This viewport is mandatory, it describes paper space itself.
-                    DxfViewport paperSpaceViewport = new DxfViewport();
-                    paperSpaceViewport.ViewCenter = new Point2D(0d, 0d);
-                    paperSpaceViewport.Size = landScapeLayout.PlotPaperSize;
-                    paperSpaceViewport.Visible = true;
+                    DxfViewport paperSpaceViewport = new DxfViewport
+                    {
+                        ViewCenter = new Point2D(0d, 0d),
+                        Size = landScapeLayout.PlotPaperSize,
+                        Visible = true
+                    };
                     paperSpaceViewport.ViewHeight = paperSpaceViewport.Size.Y;
                     paperSpaceViewport.PaperSpace = true;
                     paperSpaceViewport.FrozenLayers.Add(frozenLayer);
@@ -91,26 +97,30 @@ namespace LearningCadLib
 
                     // This viewport is a viewport showing a piece of model space in paper space.
                     // The total scale factor will be Size.Y / ViewHeight.
-                    DxfViewport modelSpaceViewport1 = new DxfViewport();
-                    modelSpaceViewport1.ViewHeight = 6d;
-                    modelSpaceViewport1.ViewCenter = new Point2D(0d, 0d);
-                    modelSpaceViewport1.Center = new Point3D(55d, 90d, 0d);
-                    modelSpaceViewport1.Target = new Point3D(0d, 0d, 0d);
-                    modelSpaceViewport1.Size = new Size2D(100d, 180d);
-                    modelSpaceViewport1.PaperSpace = true;
-                    modelSpaceViewport1.Visible = true;
+                    DxfViewport modelSpaceViewport1 = new DxfViewport
+                    {
+                        ViewHeight = 6d,
+                        ViewCenter = new Point2D(0d, 0d),
+                        Center = new Point3D(55d, 90d, 0d),
+                        Target = new Point3D(0d, 0d, 0d),
+                        Size = new Size2D(100d, 180d),
+                        PaperSpace = true,
+                        Visible = true
+                    };
                     landScapeLayout.Viewports.Add(modelSpaceViewport1);
 
                     // This viewport is a viewport showing a piece of model space in paper space.
                     // The total scale factor will be Size.Y / ViewHeight.
-                    DxfViewport modelSpaceViewport2 = new DxfViewport();
-                    modelSpaceViewport2.ViewHeight = 9d;
-                    modelSpaceViewport2.ViewCenter = new Point2D(0d, 0d);
-                    modelSpaceViewport2.Center = new Point3D(185d, 90d, 0d);
-                    modelSpaceViewport2.Target = new Point3D(0d, 0d, 0d);
-                    modelSpaceViewport2.Size = new Size2D(120d, 180d);
-                    modelSpaceViewport2.PaperSpace = true;
-                    modelSpaceViewport2.Visible = true;
+                    DxfViewport modelSpaceViewport2 = new DxfViewport
+                    {
+                        ViewHeight = 9d,
+                        ViewCenter = new Point2D(0d, 0d),
+                        Center = new Point3D(185d, 90d, 0d),
+                        Target = new Point3D(0d, 0d, 0d),
+                        Size = new Size2D(120d, 180d),
+                        PaperSpace = true,
+                        Visible = true
+                    };
                     landScapeLayout.Viewports.Add(modelSpaceViewport2);
                 }
             }
