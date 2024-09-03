@@ -220,12 +220,12 @@ namespace LearningCadLib
                     {
                         ViewHeight = 25d,
                         ViewCenter = new Point2D(0d, 0d),
-                        Center = new Point3D(               // Originally in WW example new Point3D(90d, 120d, 0d)
+                        Center = new Point3D(
                             (paperSize.Y - TOTAL_MARGIN)/ 2, 
                             (paperSize.X - UNPRINTABLE_MARGIN) / 2,
                             0d), 
                         Target = new Point3D(0d, 0d, 0d),
-                        Size = paperSize,                   // Originally in WW example new Size2D(180d, 240d)
+                        Size = paperSize,
                         PaperSpace = true,
                         Visible = false                     // Hide borders of the model space viewport 
                     };
