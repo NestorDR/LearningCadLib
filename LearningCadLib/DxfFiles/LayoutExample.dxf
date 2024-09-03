@@ -541,19 +541,19 @@ $SKPOLY
   9
 $TDCREATE
  40
-2460385.1699484144
+2460557.150284919
   9
 $TDUCREATE
  40
-2460385.1282817475
+2460557.0669515855
   9
 $TDUPDATE
  40
-2460385.1699484144
+2460557.150284919
   9
 $TDUUPDATE
  40
-2460385.1282817475
+2460557.0669515855
   9
 $TDINDWG
  40
@@ -601,7 +601,7 @@ $SPLINESEGS
   9
 $HANDSEED
   5
-68
+6F
   9
 $SURFTAB1
  70
@@ -2059,7 +2059,7 @@ ACAD
   0
 APPID
   5
-63
+6A
 330
 9
 100
@@ -2091,7 +2091,7 @@ AcDbDimStyleTable
   0
 DIMSTYLE
 105
-38
+3C
 330
 A
 100
@@ -2283,7 +2283,7 @@ AcDbBlockTableRecord
   2
 *Paper_Space0
 340
-50
+54
  70
 1
 280
@@ -2303,7 +2303,27 @@ AcDbBlockTableRecord
   2
 *Paper_Space1
 340
-54
+58
+ 70
+1
+280
+1
+281
+0
+  0
+BLOCK_RECORD
+  5
+38
+330
+1
+100
+AcDbSymbolTableRecord
+100
+AcDbBlockTableRecord
+  2
+*Paper_Space2
+340
+5B
  70
 1
 280
@@ -2449,7 +2469,7 @@ AcDbText
   0
 VIEWPORT
   5
-51
+55
 330
 30
 100
@@ -2567,7 +2587,7 @@ AcDbViewport
   0
 VIEWPORT
   5
-52
+56
 330
 30
 100
@@ -2683,7 +2703,7 @@ AcDbViewport
   0
 VIEWPORT
   5
-53
+57
 330
 30
 100
@@ -2849,15 +2869,15 @@ AcDbEntity
 100
 AcDbText
  10
-2
- 20
 0
+ 20
+5
  30
 0
  40
 10
   1
-Text on layout 3
+A text on layout 3
   7
 Standard
 100
@@ -2865,7 +2885,7 @@ AcDbText
   0
 VIEWPORT
   5
-55
+59
 330
 34
 100
@@ -2983,27 +3003,29 @@ AcDbViewport
   0
 VIEWPORT
   5
-56
+5A
 330
 34
 100
 AcDbEntity
   8
 0
+ 60
+1
  67
 1
 100
 AcDbViewport
  10
-90
+102.5
  20
-120
+143.5
  30
 0
  40
-180
+210
  41
-240
+297
  68
 2
  69
@@ -3043,7 +3065,7 @@ AcDbViewport
  44
 0
  45
-6
+14.630541871921185
  50
 0
  51
@@ -3102,6 +3124,308 @@ ENDBLK
 37
 330
 34
+100
+AcDbEntity
+  8
+0
+100
+AcDbBlockEnd
+  0
+BLOCK
+  5
+39
+330
+38
+100
+AcDbEntity
+  8
+0
+ 67
+1
+100
+AcDbBlockBegin
+  2
+*Paper_Space2
+ 70
+64
+ 10
+0
+ 20
+0
+ 30
+0
+  3
+*Paper_Space2
+  0
+TEXT
+  5
+3A
+330
+38
+100
+AcDbEntity
+  8
+0
+ 67
+1
+100
+AcDbText
+ 10
+0
+ 20
+5
+ 30
+0
+ 40
+10
+  1
+A text on layout 4
+  7
+Standard
+100
+AcDbText
+  0
+VIEWPORT
+  5
+5C
+330
+38
+100
+AcDbEntity
+  8
+0
+ 67
+1
+100
+AcDbViewport
+ 10
+0
+ 20
+0
+ 30
+0
+ 40
+210
+ 41
+297
+ 68
+1
+ 69
+1
+ 12
+0
+ 22
+0
+ 13
+0
+ 23
+0
+ 14
+0
+ 24
+0
+ 15
+0
+ 25
+0
+ 16
+0
+ 26
+0
+ 36
+1
+ 17
+0
+ 27
+0
+ 37
+0
+ 42
+50
+ 43
+0
+ 44
+0
+ 45
+297
+ 50
+0
+ 51
+0
+ 72
+100
+331
+27
+ 90
+32768
+  1
+
+281
+0
+ 71
+0
+ 74
+0
+110
+0
+120
+0
+130
+0
+111
+1
+121
+0
+131
+0
+112
+0
+122
+1
+132
+0
+ 79
+0
+146
+0
+170
+0
+ 61
+5
+292
+1
+282
+1
+141
+0
+142
+0
+ 63
+250
+  0
+VIEWPORT
+  5
+5D
+330
+38
+100
+AcDbEntity
+  8
+0
+ 60
+1
+ 67
+1
+100
+AcDbViewport
+ 10
+143.5
+ 20
+102.5
+ 30
+0
+ 40
+210
+ 41
+297
+ 68
+2
+ 69
+2
+ 12
+0
+ 22
+0
+ 13
+0
+ 23
+0
+ 14
+0
+ 24
+0
+ 15
+0
+ 25
+0
+ 16
+0
+ 26
+0
+ 36
+1
+ 17
+0
+ 27
+0
+ 37
+0
+ 42
+50
+ 43
+0
+ 44
+0
+ 45
+14.630541871921185
+ 50
+0
+ 51
+0
+ 72
+100
+ 90
+32768
+  1
+
+281
+0
+ 71
+0
+ 74
+0
+110
+0
+120
+0
+130
+0
+111
+1
+121
+0
+131
+0
+112
+0
+122
+1
+132
+0
+ 79
+0
+146
+0
+170
+0
+ 61
+5
+292
+1
+282
+1
+141
+0
+142
+0
+ 63
+250
+  0
+ENDBLK
+  5
+3B
+330
+38
 100
 AcDbEntity
   8
@@ -3221,7 +3545,7 @@ AcDbText
   0
 VIEWPORT
   5
-4E
+52
 330
 2C
 100
@@ -3339,7 +3663,7 @@ AcDbViewport
   0
 VIEWPORT
   5
-4F
+53
 330
 2C
 100
@@ -3473,15 +3797,15 @@ AcDbDictionary
   3
 ACAD_SCALELIST
 350
-39
+3D
   3
 ACAD_COLOR
 350
-4B
+4F
   3
 ACAD_FIELDLIST
 350
-4C
+50
   3
 ACAD_GROUP
 350
@@ -3489,7 +3813,7 @@ D
   3
 ACAD_IMAGE_DICT
 350
-4D
+51
   3
 ACAD_LAYOUT
 350
@@ -3497,11 +3821,11 @@ ACAD_LAYOUT
   3
 ACAD_MATERIAL
 350
-57
+5E
   3
 ACAD_MLEADERSTYLE
 350
-58
+5F
   3
 ACAD_MLINESTYLE
 350
@@ -3517,25 +3841,25 @@ E
   3
 ACAD_TABLESTYLE
 350
-5A
+61
   3
 ACDB_RECOMPOSE_DATA
 350
-5E
+65
   3
 AcDbVariableDictionary
 350
-5F
+66
   3
 ACAD_VISUALSTYLE
 350
-62
+69
   0
 DICTIONARY
   5
-5C
+63
 330
-5B
+62
 100
 AcDbDictionary
 280
@@ -3545,11 +3869,11 @@ AcDbDictionary
   3
 ACAD_ROUNDTRIP_2008_TABLESTYLE_CELLSTYLEMAP
 360
-5D
+64
   0
 DICTIONARY
   5
-39
+3D
 102
 {ACAD_REACTORS
 330
@@ -3567,75 +3891,75 @@ AcDbDictionary
   3
 A0
 350
-3A
+3E
   3
 A1
 350
-3B
+3F
   3
 A2
 350
-3C
+40
   3
 A3
 350
-3D
+41
   3
 A4
 350
-3E
+42
   3
 A5
 350
-3F
+43
   3
 A6
 350
-40
+44
   3
 A7
 350
-41
+45
   3
 A8
 350
-42
+46
   3
 A9
 350
-43
+47
   3
 B0
 350
-44
+48
   3
 B1
 350
-45
+49
   3
 B2
 350
-46
+4A
   3
 B3
 350
-47
+4B
   3
 B4
 350
-48
+4C
   3
 B5
 350
-49
+4D
   3
 B6
 350
-4A
+4E
   0
 DICTIONARY
   5
-4B
+4F
 102
 {ACAD_REACTORS
 330
@@ -3653,7 +3977,7 @@ AcDbDictionary
   0
 FIELDLIST
   5
-4C
+50
 102
 {ACAD_REACTORS
 330
@@ -3687,7 +4011,7 @@ AcDbDictionary
   0
 DICTIONARY
   5
-4D
+51
 102
 {ACAD_REACTORS
 330
@@ -3729,17 +4053,21 @@ Model
 350
 22
   3
-Landscape Layout
+Two model Viewports
 350
-50
+54
   3
 Portrait Layout
 350
-54
+58
+  3
+Landscape Layout
+350
+5B
   0
 DICTIONARY
   5
-57
+5E
 102
 {ACAD_REACTORS
 330
@@ -3757,7 +4085,7 @@ AcDbDictionary
   0
 DICTIONARY
   5
-58
+5F
 102
 {ACAD_REACTORS
 330
@@ -3775,7 +4103,7 @@ AcDbDictionary
   3
 Standard
 350
-59
+60
   0
 DICTIONARY
   5
@@ -3857,7 +4185,7 @@ E
   0
 DICTIONARY
   5
-5A
+61
 102
 {ACAD_REACTORS
 330
@@ -3875,11 +4203,11 @@ AcDbDictionary
   3
 Standard
 350
-5B
+62
   0
 XRECORD
   5
-5E
+65
 102
 {ACAD_REACTORS
 330
@@ -3895,11 +4223,11 @@ AcDbXrecord
  90
 1
 330
-5B
+62
   0
 DICTIONARY
   5
-5F
+66
 102
 {ACAD_REACTORS
 330
@@ -3917,15 +4245,15 @@ AcDbDictionary
   3
 DIMASSOC
 350
-60
+67
   3
 HIDETEXT
 350
-61
+68
   0
 DICTIONARY
   5
-62
+69
 102
 {ACAD_REACTORS
 330
@@ -3943,15 +4271,15 @@ AcDbDictionary
   0
 CELLSTYLEMAP
   5
-5D
+64
 102
 {ACAD_REACTORS
 330
-5C
+63
 102
 }
 330
-5C
+63
 100
 AcDbCellStyleMap
  90
@@ -4019,15 +4347,15 @@ CELLSTYLE_END
   0
 SCALE
   5
-3A
+3E
 102
 {ACAD_REACTORS
 330
-39
+3D
 102
 }
 330
-39
+3D
 100
 AcDbScale
  70
@@ -4043,15 +4371,15 @@ AcDbScale
   0
 SCALE
   5
-3B
+3F
 102
 {ACAD_REACTORS
 330
-39
+3D
 102
 }
 330
-39
+3D
 100
 AcDbScale
  70
@@ -4067,15 +4395,15 @@ AcDbScale
   0
 SCALE
   5
-3C
+40
 102
 {ACAD_REACTORS
 330
-39
+3D
 102
 }
 330
-39
+3D
 100
 AcDbScale
  70
@@ -4091,15 +4419,15 @@ AcDbScale
   0
 SCALE
   5
-3D
+41
 102
 {ACAD_REACTORS
 330
-39
+3D
 102
 }
 330
-39
+3D
 100
 AcDbScale
  70
@@ -4115,15 +4443,15 @@ AcDbScale
   0
 SCALE
   5
-3E
+42
 102
 {ACAD_REACTORS
 330
-39
+3D
 102
 }
 330
-39
+3D
 100
 AcDbScale
  70
@@ -4139,15 +4467,15 @@ AcDbScale
   0
 SCALE
   5
-3F
+43
 102
 {ACAD_REACTORS
 330
-39
+3D
 102
 }
 330
-39
+3D
 100
 AcDbScale
  70
@@ -4163,15 +4491,15 @@ AcDbScale
   0
 SCALE
   5
-40
+44
 102
 {ACAD_REACTORS
 330
-39
+3D
 102
 }
 330
-39
+3D
 100
 AcDbScale
  70
@@ -4187,15 +4515,15 @@ AcDbScale
   0
 SCALE
   5
-41
+45
 102
 {ACAD_REACTORS
 330
-39
+3D
 102
 }
 330
-39
+3D
 100
 AcDbScale
  70
@@ -4211,15 +4539,15 @@ AcDbScale
   0
 SCALE
   5
-42
+46
 102
 {ACAD_REACTORS
 330
-39
+3D
 102
 }
 330
-39
+3D
 100
 AcDbScale
  70
@@ -4235,15 +4563,15 @@ AcDbScale
   0
 SCALE
   5
-43
+47
 102
 {ACAD_REACTORS
 330
-39
+3D
 102
 }
 330
-39
+3D
 100
 AcDbScale
  70
@@ -4259,15 +4587,15 @@ AcDbScale
   0
 SCALE
   5
-44
+48
 102
 {ACAD_REACTORS
 330
-39
+3D
 102
 }
 330
-39
+3D
 100
 AcDbScale
  70
@@ -4283,15 +4611,15 @@ AcDbScale
   0
 SCALE
   5
-45
+49
 102
 {ACAD_REACTORS
 330
-39
+3D
 102
 }
 330
-39
+3D
 100
 AcDbScale
  70
@@ -4307,15 +4635,15 @@ AcDbScale
   0
 SCALE
   5
-46
+4A
 102
 {ACAD_REACTORS
 330
-39
+3D
 102
 }
 330
-39
+3D
 100
 AcDbScale
  70
@@ -4331,15 +4659,15 @@ AcDbScale
   0
 SCALE
   5
-47
+4B
 102
 {ACAD_REACTORS
 330
-39
+3D
 102
 }
 330
-39
+3D
 100
 AcDbScale
  70
@@ -4355,15 +4683,15 @@ AcDbScale
   0
 SCALE
   5
-48
+4C
 102
 {ACAD_REACTORS
 330
-39
+3D
 102
 }
 330
-39
+3D
 100
 AcDbScale
  70
@@ -4379,15 +4707,15 @@ AcDbScale
   0
 SCALE
   5
-49
+4D
 102
 {ACAD_REACTORS
 330
-39
+3D
 102
 }
 330
-39
+3D
 100
 AcDbScale
  70
@@ -4403,15 +4731,15 @@ AcDbScale
   0
 SCALE
   5
-4A
+4E
 102
 {ACAD_REACTORS
 330
-39
+3D
 102
 }
 330
-39
+3D
 100
 AcDbScale
  70
@@ -4451,7 +4779,7 @@ C:\Program Files\AutoCAD 2002\plotters\DWF ePlot (optimized for plotting).pc3
  41
 5
  42
-10
+5
  43
 5
  44
@@ -4691,7 +5019,7 @@ Model
   0
 LAYOUT
   5
-50
+54
 102
 {ACAD_REACTORS
 330
@@ -4715,7 +5043,7 @@ C:\Program Files\AutoCAD 2002\plotters\DWF ePlot (optimized for plotting).pc3
  41
 5
  42
-10
+5
  43
 5
  44
@@ -4765,7 +5093,7 @@ acad.stb
 100
 AcDbLayout
   1
-Landscape Layout
+Two model Viewports
  70
 0
  71
@@ -4823,7 +5151,7 @@ Landscape Layout
   0
 LAYOUT
   5
-54
+58
 102
 {ACAD_REACTORS
 330
@@ -4847,7 +5175,7 @@ C:\Program Files\AutoCAD 2002\plotters\DWF ePlot (optimized for plotting).pc3
  41
 5
  42
-10
+5
  43
 5
  44
@@ -4953,17 +5281,149 @@ Portrait Layout
 330
 34
   0
-MLEADERSTYLE
+LAYOUT
   5
-59
+5B
 102
 {ACAD_REACTORS
 330
-58
+1A
 102
 }
 330
-58
+1A
+100
+AcDbPlotSettings
+  1
+
+  2
+C:\Program Files\AutoCAD 2002\plotters\DWF ePlot (optimized for plotting).pc3
+  4
+
+  6
+
+ 40
+5
+ 41
+5
+ 42
+5
+ 43
+5
+ 44
+210
+ 45
+297
+ 46
+0
+ 47
+0
+ 48
+0
+ 49
+0
+140
+0
+141
+0
+142
+1
+143
+1
+ 70
+688
+ 72
+1
+ 73
+1
+ 74
+5
+  7
+acad.stb
+ 75
+0
+ 76
+0
+ 77
+0
+ 78
+0
+147
+1
+148
+0
+149
+0
+100
+AcDbLayout
+  1
+Landscape Layout
+ 70
+0
+ 71
+4
+ 10
+0
+ 20
+0
+ 11
+0
+ 21
+0
+ 12
+0
+ 22
+0
+ 32
+0
+ 14
+0
+ 24
+0
+ 34
+0
+ 15
+0
+ 25
+0
+ 35
+0
+146
+0
+ 13
+0
+ 23
+0
+ 33
+0
+ 16
+1
+ 26
+0
+ 36
+0
+ 17
+0
+ 27
+1
+ 37
+0
+ 76
+0
+330
+38
+  0
+MLEADERSTYLE
+  5
+60
+102
+{ACAD_REACTORS
+330
+5F
+102
+}
+330
+5F
 100
 AcDbMLeaderStyle
 179
@@ -5099,21 +5559,21 @@ ByLayer
   0
 TABLESTYLE
   5
-5B
+62
 102
 {ACAD_XDICTIONARY
 360
-5C
+63
 102
 }
 102
 {ACAD_REACTORS
 330
-5A
+61
 102
 }
 330
-5A
+61
 100
 AcDbTableStyle
   3
@@ -5283,15 +5743,15 @@ Standard
   0
 DICTIONARYVAR
   5
-60
+67
 102
 {ACAD_REACTORS
 330
-5F
+66
 102
 }
 330
-5F
+66
 100
 DictionaryVariables
 280
@@ -5301,15 +5761,15 @@ DictionaryVariables
   0
 DICTIONARYVAR
   5
-61
+68
 102
 {ACAD_REACTORS
 330
-5F
+66
 102
 }
 330
-5F
+66
 100
 DictionaryVariables
 280
