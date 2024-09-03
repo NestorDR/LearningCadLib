@@ -134,7 +134,6 @@ namespace LearningCadLib
             boundsCalculator.GetBounds(Model);
             Bounds3D bounds = boundsCalculator.Bounds;
             double modelWidth = bounds.Delta.X;
-            double modelHeight = bounds.Delta.Y;
             
             {
                 DxfLayout portraitLayout = new DxfLayout("Portrait Layout");
@@ -164,10 +163,8 @@ namespace LearningCadLib
                     portraitLayout.Viewports.Add(paperSpaceViewport);
 
                     // This viewport is a viewport showing a piece of model space in paper space.
-                    // The total scale factor will be Size.Y / ViewHeight.
                     DxfViewport modelSpaceViewport = new DxfViewport
                     {
-                        ViewHeight = 25d,
                         ViewCenter = new Point2D(0d, 0d),
                         Center = new Point3D(               // Originally in WW example new Point3D(90d, 120d, 0d)
                             (paperSize.X - UNPRINTABLE_MARGIN) / 2,
@@ -178,8 +175,10 @@ namespace LearningCadLib
                         PaperSpace = true,
                         Visible = false                     // Hide borders of the model space viewport 
                     };
-                    
-                    double scaleFactor = paperSize.X * 0.87 / modelWidth;
+
+                    // The total scale factor will be Size.Y / ViewHeight.
+                    // Visit: https://www.woutware.com/Forum/Topic/342
+                    double scaleFactor = modelSpaceViewport.Size.X * 0.87 / modelWidth;
                     modelSpaceViewport.ViewHeight = modelSpaceViewport.Size.Y / scaleFactor;
 
                     portraitLayout.Viewports.Add(modelSpaceViewport);
@@ -187,7 +186,6 @@ namespace LearningCadLib
             }
 
             {
-
                 DxfLayout landscape = new DxfLayout("Landscape Layout");
                 Model.Layouts.Add(landscape);
                 landscape.Entities.Add(new DxfText("A text on layout 4", new Point3D(0d, 5d, 0d), 10d));
@@ -215,10 +213,8 @@ namespace LearningCadLib
                     landscape.Viewports.Add(paperSpaceViewport);
 
                     // This viewport is a viewport showing a piece of model space in paper space.
-                    // The total scale factor will be Size.Y / ViewHeight.
                     DxfViewport modelSpaceViewport = new DxfViewport
                     {
-                        ViewHeight = 25d,
                         ViewCenter = new Point2D(0d, 0d),
                         Center = new Point3D(
                             (paperSize.Y - TOTAL_MARGIN)/ 2, 
@@ -230,7 +226,9 @@ namespace LearningCadLib
                         Visible = false                     // Hide borders of the model space viewport 
                     };
                     
-                    double scaleFactor = paperSize.X * 0.87 / modelWidth;
+                    // The total scale factor will be Size.Y / ViewHeight.
+                    // Visit: https://www.woutware.com/Forum/Topic/342
+                    double scaleFactor = modelSpaceViewport.Size.X * 0.87 / modelWidth;
                     modelSpaceViewport.ViewHeight = modelSpaceViewport.Size.Y / scaleFactor;
 
                     landscape.Viewports.Add(modelSpaceViewport);
