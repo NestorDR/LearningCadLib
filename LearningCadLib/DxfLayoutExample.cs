@@ -170,21 +170,23 @@ namespace LearningCadLib
                     portraitLayout.Viewports.Add(paperSpaceViewport);
 
                     // This viewport is a viewport showing a piece of model space in paper space.
-                    // ViewPort.ViewHeight = ViewPort.Size.Y / Scale factor (Visit: https://www.woutware.com/Forum/Topic/342)
                     Size2D viewportSize = new Size2D(paperSize.X - TOTAL_MARGIN, paperSize.Y - TOTAL_MARGIN);
                     double scaleFactor = Math.Min(viewportSize.X / modelWidth, viewportSize.Y / modelHeight);
                     DxfViewport modelSpaceViewport = new DxfViewport
                     {
+                        // Centering point on the paper
                         Center = new Point3D(                   // Originally in WW example new Point3D(90d, 120d, 0d)
                             viewportSize.X / 2,
                             viewportSize.Y / 2, 
                             0d), 
+                        PaperSpace = true,
                         Size = viewportSize,                   // Originally in WW example new Size2D(180d, 240d)
                         Target = new Point3D(0d, 0d, 0d),
                         ViewCenter = new Point2D(modelDisplacementOnX, modelDisplacementOnY),
+                        // ViewPort.ViewHeight visit: https://www.woutware.com/doc/cadlib4.0/api/WW.Cad.Model.Entities.DxfViewport.html & https://www.woutware.com/Forum/Topic/342
                         ViewHeight = viewportSize.Y / scaleFactor,
-                        PaperSpace = true,
-                        Visible = true                     // Set false to hide borders of the model space viewport
+                        // Set false to hide borders of the model space viewport
+                        Visible = true                     
                     };
 
                     portraitLayout.Viewports.Add(modelSpaceViewport);
@@ -225,6 +227,7 @@ namespace LearningCadLib
                     double scaleFactor = Math.Min(rotatedViewportSize.X / modelWidth, rotatedViewportSize.Y / modelHeight) * 0.99;
                     DxfViewport modelSpaceViewport = new DxfViewport
                     {
+                        // Centering point on the paper
                         Center = new Point3D(
                             rotatedViewportSize.X / 2,
                             rotatedViewportSize.Y / 2, 
@@ -233,8 +236,10 @@ namespace LearningCadLib
                         Size = rotatedViewportSize,
                         Target = new Point3D(0, 0, 0d),
                         ViewCenter = new Point2D(modelDisplacementOnX, modelDisplacementOnY),
+                        // ViewPort.ViewHeight visit: https://www.woutware.com/doc/cadlib4.0/api/WW.Cad.Model.Entities.DxfViewport.html & https://www.woutware.com/Forum/Topic/342
                         ViewHeight = rotatedViewportSize.Y / scaleFactor,
-                        Visible = true                     // Set false to hide borders of the model space viewport
+                        // Set false to hide borders of the model space viewport
+                        Visible = true                     
                     };
 
                     landscape.Viewports.Add(modelSpaceViewport);
