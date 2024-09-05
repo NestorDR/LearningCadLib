@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using WW.Cad.Drawing;
 using WW.Cad.Model.Entities;
 using WW.Cad.Model.Objects;
@@ -30,6 +31,7 @@ namespace LearningCadLib
             DxfLayer frozenLayer = new DxfLayer("Frozen");
             Model.Layers.Add(frozenLayer);
 
+            // Layout number 1
             {
                 DxfLayout layout1 = Model.Layouts["layout1"];
                 layout1.Name = "Layout number 1";
@@ -47,11 +49,11 @@ namespace LearningCadLib
                     // This viewport is mandatory, it describes paper space itself.
                     DxfViewport paperSpaceViewport = new DxfViewport
                     {
-                        ViewCenter = new Point2D(0d, 0d),
+                        PaperSpace = true,
                         Size = new Size2D(100d, 100d),
-                        Visible = true,
+                        ViewCenter = new Point2D(0d, 0d),
                         ViewHeight = 100d,
-                        PaperSpace = true
+                        Visible = true,
                     };
                     paperSpaceViewport.FrozenLayers.Add(frozenLayer);
                     layout1.Viewports.Add(paperSpaceViewport);
@@ -71,7 +73,8 @@ namespace LearningCadLib
                     layout1.Viewports.Add(modelSpaceViewport);
                 }
             }
-
+    
+            // Two model Viewports
             {
                 // A landscape layout with 2 viewports.
                 DxfLayout landScapeLayout = new DxfLayout("Two model Viewports");
@@ -103,12 +106,12 @@ namespace LearningCadLib
                     // The total scale factor will be Size.Y / ViewHeight.
                     DxfViewport modelSpaceViewport1 = new DxfViewport
                     {
-                        ViewHeight = 6d,
-                        ViewCenter = new Point2D(0d, 0d),
                         Center = new Point3D(55d, 90d, 0d),
-                        Target = new Point3D(0d, 0d, 0d),
-                        Size = new Size2D(100d, 180d),
                         PaperSpace = true,
+                        Size = new Size2D(100d, 180d),
+                        ViewCenter = new Point2D(0d, 0d),
+                        Target = new Point3D(0d, 0d, 0d),
+                        ViewHeight = 6d,
                         Visible = true
                     };
                     landScapeLayout.Viewports.Add(modelSpaceViewport1);
@@ -117,28 +120,32 @@ namespace LearningCadLib
                     // The total scale factor will be Size.Y / ViewHeight.
                     DxfViewport modelSpaceViewport2 = new DxfViewport
                     {
-                        ViewHeight = 9d,
-                        ViewCenter = new Point2D(0d, 0d),
                         Center = new Point3D(185d, 90d, 0d),
-                        Target = new Point3D(0d, 0d, 0d),
-                        Size = new Size2D(120d, 180d),
                         PaperSpace = true,
+                        Size = new Size2D(120d, 180d),
+                        Target = new Point3D(0d, 0d, 0d),
+                        ViewCenter = new Point2D(0d, 0d),
+                        ViewHeight = 9d,
                         Visible = true
                     };
                     landScapeLayout.Viewports.Add(modelSpaceViewport2);
                 }
             }
 
-            // Identify model size
+            // Calculate model size and displacement to center
             BoundsCalculator boundsCalculator = new BoundsCalculator();
             boundsCalculator.GetBounds(Model);
             Bounds3D bounds = boundsCalculator.Bounds;
             double modelWidth = bounds.Delta.X;
+            double modelHeight = bounds.Delta.Y;
+            double modelDisplacementOnX = (bounds.Max.X + bounds.Min.X) / 2;
+            double modelDisplacementOnY = (bounds.Max.Y + bounds.Min.Y) / 2;
             
+            // Portrait Layout
             {
                 DxfLayout portraitLayout = new DxfLayout("Portrait Layout");
                 Model.Layouts.Add(portraitLayout);
-                portraitLayout.Entities.Add(new DxfText("A text on layout 3", new Point3D(0d, 5d, 0d), 10d));
+                portraitLayout.Entities.Add(new DxfText("A text on layout 3", new Point3D(0d, 4d, 0d), 10d));
                 // Paper size and margins are defined before being rotated according to property PlotRotation.
                 portraitLayout.PlotPaperSize = new Size2D(210, 297); // A4 size in mm.
                 portraitLayout.UnprintableMarginLeft = UNPRINTABLE_MARGIN;
@@ -153,87 +160,87 @@ namespace LearningCadLib
                     // This viewport is mandatory, it describes paper space itself.
                     DxfViewport paperSpaceViewport = new DxfViewport
                     {
-                        ViewCenter = new Point2D(0d, 0d),
+                        PaperSpace = true,
                         Size = paperSize,
-                        Visible = true,
+                        ViewCenter = new Point2D(0d, 0d),
                         ViewHeight = paperSize.Y,
-                        PaperSpace = true
+                        Visible = true,
                     };
                     paperSpaceViewport.FrozenLayers.Add(frozenLayer);
                     portraitLayout.Viewports.Add(paperSpaceViewport);
 
                     // This viewport is a viewport showing a piece of model space in paper space.
+                    // ViewPort.ViewHeight = ViewPort.Size.Y / Scale factor (Visit: https://www.woutware.com/Forum/Topic/342)
+                    Size2D viewportSize = new Size2D(paperSize.X - TOTAL_MARGIN, paperSize.Y - TOTAL_MARGIN);
+                    double scaleFactor = Math.Min(viewportSize.X / modelWidth, viewportSize.Y / modelHeight);
                     DxfViewport modelSpaceViewport = new DxfViewport
                     {
-                        ViewCenter = new Point2D(0d, 0d),
-                        Center = new Point3D(               // Originally in WW example new Point3D(90d, 120d, 0d)
-                            (paperSize.X - UNPRINTABLE_MARGIN) / 2,
-                            (paperSize.Y - TOTAL_MARGIN)/ 2, 
+                        Center = new Point3D(                   // Originally in WW example new Point3D(90d, 120d, 0d)
+                            viewportSize.X / 2,
+                            viewportSize.Y / 2, 
                             0d), 
+                        Size = viewportSize,                   // Originally in WW example new Size2D(180d, 240d)
                         Target = new Point3D(0d, 0d, 0d),
-                        Size = paperSize,                   // Originally in WW example new Size2D(180d, 240d)
+                        ViewCenter = new Point2D(modelDisplacementOnX, modelDisplacementOnY),
+                        ViewHeight = viewportSize.Y / scaleFactor,
                         PaperSpace = true,
-                        Visible = false                     // Hide borders of the model space viewport 
+                        Visible = true                     // Set false to hide borders of the model space viewport
                     };
-
-                    // The total scale factor will be Size.Y / ViewHeight.
-                    // Visit: https://www.woutware.com/Forum/Topic/342
-                    double scaleFactor = modelSpaceViewport.Size.X * 0.87 / modelWidth;
-                    modelSpaceViewport.ViewHeight = modelSpaceViewport.Size.Y / scaleFactor;
 
                     portraitLayout.Viewports.Add(modelSpaceViewport);
                 }
             }
 
+            // Landscape Layout
             {
                 DxfLayout landscape = new DxfLayout("Landscape Layout");
                 Model.Layouts.Add(landscape);
-                landscape.Entities.Add(new DxfText("A text on layout 4", new Point3D(0d, 5d, 0d), 10d));
+                landscape.Entities.Add(new DxfText("A text on layout 4", new Point3D(0d, 4d, 0d), 10d));
                 // Paper size and margins are defined before being rotated according to property PlotRotation.
-                landscape.PlotPaperSize = new Size2D(210, 297); // A4 size in mm.
+                landscape.PlotPaperSize = new Size2D(210, 297);     // A4 size in mm.
                 landscape.UnprintableMarginLeft = UNPRINTABLE_MARGIN;
                 landscape.UnprintableMarginRight = UNPRINTABLE_MARGIN;
                 landscape.UnprintableMarginTop = UNPRINTABLE_MARGIN;
                 landscape.UnprintableMarginBottom = UNPRINTABLE_MARGIN;
                 landscape.TabOrder = 4;
-                landscape.PlotRotation = PlotRotation.QuarterCounterClockwise; // Portrait
+                landscape.PlotRotation = PlotRotation.QuarterCounterClockwise; // Landscape
 
                 Size2D paperSize = landscape.PlotPaperSize;
                 {
                     // This viewport is mandatory, it describes paper space itself.
                     DxfViewport paperSpaceViewport = new DxfViewport
                     {
-                        ViewCenter = new Point2D(0d, 0d),
                         Size = paperSize,
-                        Visible = true,
+                        PaperSpace = true,
+                        ViewCenter = new Point2D(0d, 0d),
                         ViewHeight = paperSize.Y,
-                        PaperSpace = true
+                        Visible = true,
                     };
                     paperSpaceViewport.FrozenLayers.Add(frozenLayer);
                     landscape.Viewports.Add(paperSpaceViewport);
 
                     // This viewport is a viewport showing a piece of model space in paper space.
+                    // ViewPort.ViewHeight = ViewPort.Size.Y / Scale factor (Visit: https://www.woutware.com/Forum/Topic/342)
+                    Size2D rotatedViewportSize = new Size2D(paperSize.Y - TOTAL_MARGIN, paperSize.X - TOTAL_MARGIN);
+                    double scaleFactor = Math.Min(rotatedViewportSize.X / modelWidth, rotatedViewportSize.Y / modelHeight) * 0.99;
                     DxfViewport modelSpaceViewport = new DxfViewport
                     {
-                        ViewCenter = new Point2D(0d, 0d),
                         Center = new Point3D(
-                            (paperSize.Y - TOTAL_MARGIN)/ 2, 
-                            (paperSize.X - UNPRINTABLE_MARGIN) / 2,
+                            rotatedViewportSize.X / 2,
+                            rotatedViewportSize.Y / 2, 
                             0d), 
-                        Target = new Point3D(0d, 0d, 0d),
-                        Size = paperSize,
                         PaperSpace = true,
-                        Visible = false                     // Hide borders of the model space viewport 
+                        Size = rotatedViewportSize,
+                        Target = new Point3D(0, 0, 0d),
+                        ViewCenter = new Point2D(modelDisplacementOnX, modelDisplacementOnY),
+                        ViewHeight = rotatedViewportSize.Y / scaleFactor,
+                        Visible = true                     // Set false to hide borders of the model space viewport
                     };
-                    
-                    // The total scale factor will be Size.Y / ViewHeight.
-                    // Visit: https://www.woutware.com/Forum/Topic/342
-                    double scaleFactor = modelSpaceViewport.Size.X * 0.87 / modelWidth;
-                    modelSpaceViewport.ViewHeight = modelSpaceViewport.Size.Y / scaleFactor;
 
                     landscape.Viewports.Add(modelSpaceViewport);
                 }
             }
+            
             return SaveFile();
         }
     }
